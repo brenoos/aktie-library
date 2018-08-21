@@ -5,4 +5,4 @@ const locadorSchema = new mongoose.Schema({
     nome: { type: String, required: true }
 })
 
-module.exports = restful.model('Locador', BookSchema)
+module.exports = restful.model('Locador', locadorSchema)
