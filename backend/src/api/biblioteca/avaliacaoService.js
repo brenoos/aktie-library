@@ -6,8 +6,8 @@ Avaliacao.updateOptions({ new: true, runValidators: true })
 Avaliacao.before('post', checaAvaliacao).after('post', errorHandler).after('put', errorHandler)
 
 function checaAvaliacao (req, res, next)  {
-    const livroId = req.body.livro  //'5b7c9c84ac42974d64551e31' 
-    const locadorId = req.body.locador  //'5b7c8dbd812d1b2d944104bc' 
+    const livroId = req.body.livro  
+    const locadorId = req.body.locador  
 
     Avaliacao.findOne({
         $and: [
@@ -17,7 +17,7 @@ function checaAvaliacao (req, res, next)  {
         
     }, (erro, avaliacao) => {
         if (erro) {
-            res.status(500).json({errors: [error]})
+            res.status(442).json({errors: [error]})
         } else if (avaliacao){
             res.json({comentou: 'Você já Comentou esse livro'})
         } else {
