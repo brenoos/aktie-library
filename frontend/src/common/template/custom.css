@@ -10,3 +10,7 @@ button {
 .table-actions {
     width: 150px;
 }
+
+input[type='radio']{
+    margin-left: 10px;
+}

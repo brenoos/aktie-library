@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { toastr }  from 'react-redux-toastr'
+import { initialize } from 'redux-form'
 import consts from '../consts'
+import bootbox from 'bootbox'
 
 const VALIDATED = 'VALIDATED'
 
@@ -9,15 +11,27 @@ export const validaLocador = locador => {
         const nome = locador.name
         axios.get(`${consts.API_URL}/locador/n/${nome}`)
             .then(resp => {
-                dispatch({
+                dispatch([{
                     type: VALIDATED,
-                    payload: resp.data.validado
-                })
+                    payload: resp.data
+                }, initialize('AvaliacaoForm', {locador: resp.data.locador})])
             })
             .catch(e => {
                 e.response.data.errors.forEach(
                     error => toastr.error('Erro', error)
                 )
+            })
+    }
+}
+
+export const submit = values => {
+    return dispatch => {
+        axios.post(`${consts.API_URL}/avaliacao`, values)
+            .then(resp => {
+                toastr.success('Sucesso', 'Avaliação Registrada')
+            })
+            .catch(e => {
+                e.response.data.errors.forEach(error => toastr.error('Erro', error))
             })
     }
 }
