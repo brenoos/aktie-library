@@ -1,15 +1,12 @@
 const express = require('express')
-
+const Locador = require('../api/biblioteca/locador')
+const AvaliacaoService = require('../api/biblioteca/avaliacaoService')
+const LocadorService = require('../api/biblioteca/locadorService')
+const LivroService = require('../api/biblioteca/livroService')
 
 module.exports = server => {
     const api = express.Router()
     server.use('/api', api)
-
-    const AvaliacaoService = require('../api/biblioteca/avaliacaoService')
-    const LocadorService = require('../api/biblioteca/locadorService')
-    const LivroService = require('../api/biblioteca/livroService')
-
-    const Locador = require('../api/biblioteca/locador')
 
     AvaliacaoService.register(api, '/avaliacao')
     LocadorService.register(api, '/locador')
