@@ -8,9 +8,9 @@ import LabelAndInput from '../common/form/labelAndInput'
 class NomeForm extends Component {
     render() {
         return (
-            <form role="form"  >
+            <form role="form" onSubmit={this.props.handleSubmit} >
                 <div className="box-body">
-                    <Field name='name' component={LabelAndInput} readOnly={false}
+                    <Field name='name' component={LabelAndInput} readOnly={this.props.readOnly}
                         label='Nome' cols='12 4' placeholder='Informe o nome' />
                 </div>
                 <div className="box-footer">

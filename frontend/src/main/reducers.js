@@ -4,12 +4,12 @@ import { reducer as toastrReducer } from 'react-redux-toastr'
 
 
 import TabReducer from '../common/tab/tabReducer'
-import BillingCycleReducer from '../billingCycle/billingCycleReducer'
+import AvaliacaoReducer from '../avaliacao/avaliacaoReducer'
 import AuthReducer from '../auth/authReducer'
 
 const rootReducer = combineReducers({
     tab: TabReducer,
-    billingCycle: BillingCycleReducer,
+    avaliacao: AvaliacaoReducer,
     form: formReducer,
     toastr: toastrReducer,
     auth: AuthReducer

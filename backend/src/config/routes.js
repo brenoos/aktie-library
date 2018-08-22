@@ -12,14 +12,20 @@ module.exports = server => {
     LocadorService.register(api, '/locador')
     LivroService.register(api, '/livro')
 
-    api.get('/locador/:locador', (req, res, next) => {
+    api.get('/locador/n/:locador', (req, res, next) => {
             const locador = req.params.locador
         
             Locador.findOne({nome: locador}, (erro, value) => {
-                if (value){
+                if (erro) {
+                    res.status(442).json({errors: [error]})
+                } else if (value){
                    res.json({validado: true})
                 } else {
-                   res.json({comentou: 'Usuario não existe'})
+                    res.status(442).send({
+                        errors: [
+                            "Usuario não existe"
+                        ]
+                    })
                 }
             } )
     })
