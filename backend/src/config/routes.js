@@ -12,7 +12,7 @@ module.exports = server => {
     LocadorService.register(api, '/locador')
     LivroService.register(api, '/livro')
 
-    api.get('/validaLocador/:locador', (req, res, next) => {
+    api.get('/locador/:locador', (req, res, next) => {
             const locador = req.params.locador
         
             Locador.findOne({nome: locador}, (erro, value) => {
