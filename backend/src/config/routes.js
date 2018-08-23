@@ -3,6 +3,7 @@ const Locador = require('../api/biblioteca/locador')
 const AvaliacaoService = require('../api/biblioteca/avaliacaoService')
 const LocadorService = require('../api/biblioteca/locadorService')
 const LivroService = require('../api/biblioteca/livroService')
+const AuthService = require('../api/user/authService')
 
 module.exports = server => {
     const api = express.Router()
@@ -11,6 +12,10 @@ module.exports = server => {
     AvaliacaoService.register(api, '/avaliacao')
     LocadorService.register(api, '/locador')
     LivroService.register(api, '/livro')
+
+    api.post('/login', AuthService.login)
+    api.post('/signup', AuthService.signup)
+    api.post('/validateToken', AuthService.validateToken)
 
     api.get('/locador/n/:locador', (req, res, next) => {
             const locador = req.params.locador
@@ -29,5 +34,7 @@ module.exports = server => {
                 }
             } )
     })
+
+
 
 }

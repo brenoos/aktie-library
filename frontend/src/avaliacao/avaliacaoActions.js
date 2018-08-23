@@ -5,6 +5,7 @@ import consts from '../consts'
 import bootbox from 'bootbox'
 
 const VALIDATED = 'VALIDATED'
+const RESETED = 'RESETED'
 
 export const validaLocador = locador => {
     return dispatch => {
@@ -25,10 +26,19 @@ export const validaLocador = locador => {
 }
 
 export const submit = values => {
+    
     return dispatch => {
         axios.post(`${consts.API_URL}/avaliacao`, values)
             .then(resp => {
-                toastr.success('Sucesso', 'Avaliação Registrada')
+                var confirmar = confirm("quer continuar?")
+                if(confirmar){
+                    toastr.success('Sucesso', 'Avaliação Registrada')
+                }else{
+                    dispatch({
+                        type: RESETED,
+                        payload: {}
+                    })
+                }
             })
             .catch(e => {
                 e.response.data.errors.forEach(error => toastr.error('Erro', error))

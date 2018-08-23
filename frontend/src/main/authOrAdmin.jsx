@@ -3,11 +3,11 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import App from './app'
+import Admin from './admin'
 import Auth from '../auth/auth'
 import { validateToken } from '../auth/authActions'
 
-class AuthOrApp extends Component {
+class AuthOrAdmin extends Component {
 
     componentWillMount() {
         if (this.props.auth.user) {
@@ -19,7 +19,7 @@ class AuthOrApp extends Component {
         const { user, validToken } = this.props.auth
         if (user && validToken) {
             axios.defaults.headers.common['Authorization'] = user.token
-            return <App>{this.props.children}</App>
+            return <Admin>{this.props.children}</Admin>
         } else if (!user && !validToken) {
             return <Auth />
         } else {
@@ -31,4 +31,4 @@ class AuthOrApp extends Component {
 const mapStateToProps = state => ({ auth: state.auth })
 const mapDispatchToProps = dispatch => bindActionCreators({ validateToken },
     dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(AuthOrApp)
+export default connect(mapStateToProps, mapDispatchToProps)(AuthOrAdmin)
