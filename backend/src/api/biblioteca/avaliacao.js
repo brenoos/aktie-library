@@ -1,6 +1,6 @@
 const restful = require('node-restful')
 const mongoose = restful.mongoose
-
+const mongoosePaginate = require('mongoose-paginate')
 
 const avaliacaoSchema = new mongoose.Schema({
     livro: { type: mongoose.Schema.Types.ObjectId, ref: 'Livro', required: true } ,
@@ -10,5 +10,5 @@ const avaliacaoSchema = new mongoose.Schema({
     observacoes : { type: String, min: 1, max: 256, required: true }
 })
 
-
+avaliacaoSchema.plugin(mongoosePaginate)
 module.exports = restful.model('Avaliacao', avaliacaoSchema)

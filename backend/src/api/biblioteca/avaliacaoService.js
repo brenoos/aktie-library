@@ -19,11 +19,12 @@ function checaAvaliacao (req, res, next)  {
         if (erro) {
             res.status(442).json({errors: [error]})
         } else if (avaliacao){
-            res.json({comentou: 'Você já Comentou esse livro'})
+            res.status(442).json({errors: ["Você ja comentou esse livro"]})
         } else {
             next()
         }
     } )
 }
+
 
 module.exports = Avaliacao

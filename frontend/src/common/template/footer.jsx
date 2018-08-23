@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = props => (
-    <footer className='main-footer'>
+    <footer className={`main-footer ${props.estilo}`}>
         <strong>
             Copyright &copy; 2018
             <a href="http://github.com/brenoos" target='_blank'> Breno Oliveira</a>.
