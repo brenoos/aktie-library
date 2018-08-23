@@ -26,4 +26,5 @@ function checaAvaliacao (req, res, next)  {
     } )
 }
 
+
 module.exports = Avaliacao

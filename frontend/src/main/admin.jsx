@@ -8,10 +8,10 @@ import Messages from '../common/msg/messages'
 const Admin = props => (
     <div className='wrapper'>
         <Header />
-        <div className='content-wrapper'>
-            {props.children}
+        <div className='content-wrapper wrapper-admin'>
+            <h1>admin</h1>
         </div>
-        <Footer />
+        <Footer estilo='wrapper-admin'/>
         <Messages />
     </div>
 )
