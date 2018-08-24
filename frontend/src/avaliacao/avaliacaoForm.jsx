@@ -5,10 +5,9 @@ import { reduxForm, Field, initialize } from 'redux-form'
 import axios from 'axios'
 import consts from '../consts'
 
+import { voltar } from './avaliacaoActions'
 import Grid from '../common/layout/grid'
 import Row from '../common/layout/row'
-import LabelAndInput from '../common/form/labelAndInput'
-import LabelAndSelect from '../common/form/labelAndSelect'
 
 
 class AvaliacaoForm extends Component {
@@ -20,7 +19,6 @@ class AvaliacaoForm extends Component {
 
     componentWillMount() {
         this.getList()
-        initialize('AvaliacaoForm', {observacoes: "Boniiiito"})
     }
 
     getList(){
@@ -94,11 +92,12 @@ class AvaliacaoForm extends Component {
                 </div>
                 <div className="box-footer">
                     <button type="submit" className={`btn btn-primary`}>Confirmar</button>
-                    <button type='button' className='btn btn-default'>Cancelar</button>
+                    <button type='button' className='btn btn-default' onClick={this.props.voltar}>Cancelar</button>
                 </div>
             </form>
         )
     }
 }
 AvaliacaoForm = reduxForm({ form: 'AvaliacaoForm' })(AvaliacaoForm)
-export default AvaliacaoForm
+const mapDispatchToProps = dispatch => bindActionCreators({voltar}, dispatch)
+export default connect(null, mapDispatchToProps)(AvaliacaoForm)

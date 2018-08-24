@@ -33,10 +33,9 @@ export const submit = values => {
                 if(confirmar){
                     toastr.success('Sucesso', 'Avaliação Registrada')
                 }else{
-                    dispatch({
-                        type: RESETED,
-                        payload: {}
-                    })
+                    dispatch(
+                        reset()
+                    )
                 }
             })
             .catch(e => {
@@ -45,5 +44,13 @@ export const submit = values => {
     }
 }
 
+export const voltar = () => {
+    return reset()
+}
 
-
+export const reset = () => {
+    return {
+        type: RESETED,
+        payload: {}
+    }
+}
