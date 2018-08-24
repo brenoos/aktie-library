@@ -31,7 +31,7 @@ export const submit = values => {
             .then(resp => {
                 var confirmar = confirm("quer continuar?")
                 if(confirmar){
-                    toastr.success('Sucesso', 'Avaliação Registrada')
+                    toastr.success('Sucesso', 'Avaliação Registrada com sucesso')
                 }else{
                     dispatch(
                         reset()
