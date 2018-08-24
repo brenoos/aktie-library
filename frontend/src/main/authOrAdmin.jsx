@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Admin from './admin'
+import Admin from './admin/admin'
 import Auth from '../auth/auth'
 import { validateToken } from '../auth/authActions'
 

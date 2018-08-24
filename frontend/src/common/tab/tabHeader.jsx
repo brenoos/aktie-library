@@ -11,7 +11,6 @@ class TabHeader extends Component {
         let selected = tab.selected === target
         let visible = tab.visible[target]
         return(
-            <If test={visible}>
                 <li className={selected ? 'active' : ''}>
                     <a href='javascript:;'
                         data-toggle='tab'
@@ -20,7 +19,6 @@ class TabHeader extends Component {
                         <i className={`fa fa-${icon}`}></i> {label}
                     </a>
                 </li>
-            </If>
         )
     }
 }

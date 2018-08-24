@@ -37,6 +37,7 @@
     "webpack-dev-server": "1.16.2"
   },
   "dependencies": {
-    "bootbox": "^4.4.0"
+    "bootbox": "^4.4.0",
+    "react-paginate": "^5.2.4"
   }
 }

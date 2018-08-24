@@ -10,12 +10,10 @@ class TabContent extends Component {
         let selected = tab.selected === id
         let visible = tab.visible[id]
         return(
-            <If test={visible}>
                 <div id={id}
                     className={`tab-pane ${selected ?  'active' : ''}`}>
                     {children}
                 </div>
-            </If>
         )
     }
 }

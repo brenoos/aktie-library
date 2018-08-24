@@ -6,13 +6,13 @@ Avaliacao.updateOptions({ new: true, runValidators: true })
 Avaliacao.before('post', checaAvaliacao).after('post', errorHandler).after('put', errorHandler)
 
 function checaAvaliacao (req, res, next)  {
-    const livroId = req.body.livro  
-    const locadorId = req.body.locador  
+    const livroNome = req.body.nomeLivro  
+    const locadorNome = req.body.nomeLocador  
 
     Avaliacao.findOne({
         $and: [
-            {livro: livroId}, 
-            {locador: locadorId}
+            {nomeLivro: livroNome}, 
+            {nomeLocador: locadorNome}
         ]
         
     }, (erro, avaliacao) => {
@@ -25,6 +25,18 @@ function checaAvaliacao (req, res, next)  {
         }
     } )
 }
+
+Avaliacao.route('count', ['get'], (req, res, next) => {
+    Avaliacao.count((error, value) => {
+        if(error){
+            res.status(500).json({errors: [error]})
+        } else {
+            res.json({value})
+        }
+    })
+})
+
+
 
 
 module.exports = Avaliacao

@@ -32,7 +32,7 @@ class AvaliacaoForm extends Component {
         const lista = this.state.list || []
 
         return lista.map(livro => (
-            <option key={livro._id} value={livro._id}>{livro.titulo}</option>
+            <option key={livro._id} value={livro.titulo}>{livro.titulo}</option>
         ))
 
     }
@@ -44,7 +44,7 @@ class AvaliacaoForm extends Component {
                 <Grid cols='12 12'>
                     <Row>
                     <label htmlFor='livro'>Livro</label>
-                        <Field name='livro' component='select' className='form-control'>
+                        <Field name='nomeLivro' component='select' className='form-control'>
                            <option ></option>
                            {this.renderOptions()}
                         </Field>

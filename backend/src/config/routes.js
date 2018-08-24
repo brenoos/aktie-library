@@ -19,12 +19,11 @@ module.exports = server => {
 
     api.get('/locador/n/:locador', (req, res, next) => {
             const locador = req.params.locador
-            var query = Locador.find({nome: locador})
             Locador.findOne({nome: locador}, (erro, value) => {
                 if (erro) {
                     res.status(442).json({errors: [error]})
                 } else if (value){
-                   res.json({validado: true, locador: value._id})
+                   res.json({validado: true, locador: value.nome})
                 } else {
                     res.status(442).send({
                         errors: [
