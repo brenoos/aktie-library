@@ -19,7 +19,7 @@ function checaAvaliacao (req, res, next)  {
         if (erro) {
             res.status(442).json({errors: [error]})
         } else if (avaliacao){
-            res.status(442).json({errors: ["Você ja comentou esse livro"]})
+            res.status(442).json({errors: ["Você ja comentou esse livro!"]})
         } else {
             next()
         }
